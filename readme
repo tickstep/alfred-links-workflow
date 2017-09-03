@@ -1,0 +1,8 @@
+install libs
+
+$ echo "[install]
+prefix=" > ~/.pydistutils.cfg
+
+$ pip install --target=. Alfred-Workflow
+
+$ pip install --target=. requests
