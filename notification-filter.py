@@ -17,8 +17,10 @@ def main(wf):
     if len(wf.args) == 0:
         return
     outputString = wf.args[0]
-    log.info(outputString)
+    # log.info(outputString)
     if len(outputString) == 0:
+        return
+    if outputString.find('<?xml') == 0:  # filter exception output
         return
     if outputString.find('-search-url') != 0:
         print outputString

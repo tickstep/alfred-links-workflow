@@ -8,21 +8,11 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>09155D2E-F5BB-49FC-8313-C8AEA16F43E9</key>
+		<key>04A43612-C90B-4CDF-B0E4-165DC6E806F3</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>DA64B19B-44F8-4D59-97C0-D2DF6626ACC2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>73B63D8F-868A-47A8-B12E-36D2F7564429</string>
+				<string>E7145896-21CA-4681-94EA-D5492B186DCD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -56,16 +46,6 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>09155D2E-F5BB-49FC-8313-C8AEA16F43E9</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
 		</array>
 		<key>4D0DBCFF-B790-4B90-BA49-5A4D69BE43C8</key>
 		<array>
@@ -84,7 +64,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E7145896-21CA-4681-94EA-D5492B186DCD</string>
+				<string>04A43612-C90B-4CDF-B0E4-165DC6E806F3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -146,6 +126,25 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>E7145896-21CA-4681-94EA-D5492B186DCD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>2</integer>
+				<key>matchstring</key>
+				<string>^(?!(&lt;\?xml))</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>04A43612-C90B-4CDF-B0E4-165DC6E806F3</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -249,79 +248,18 @@ echo "{query}" &gt; .query
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>下载链接已复制</string>
-				<key>title</key>
-				<string>链刻/Links</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>DA64B19B-44F8-4D59-97C0-D2DF6626ACC2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>export LC_CTYPE="$(defaults read -g AppleLocale).UTF-8"
-/usr/bin/env python -O clipboard-filter.py "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>09155D2E-F5BB-49FC-8313-C8AEA16F43E9</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>73B63D8F-868A-47A8-B12E-36D2F7564429</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>链刻/Links服务官方Alfred workflow扩展。
+请访问我们的官方网站了解更多信息：http://links.tickstep.com</string>
 	<key>uidata</key>
 	<dict>
-		<key>09155D2E-F5BB-49FC-8313-C8AEA16F43E9</key>
+		<key>04A43612-C90B-4CDF-B0E4-165DC6E806F3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>660</integer>
+			<integer>820</integer>
 			<key>ypos</key>
-			<integer>340</integer>
+			<integer>150</integer>
 		</dict>
 		<key>33FF7703-B3C7-40D8-9974-2542B8AF3F7F</key>
 		<dict>
@@ -344,37 +282,23 @@ echo "{query}" &gt; .query
 			<key>ypos</key>
 			<integer>170</integer>
 		</dict>
-		<key>73B63D8F-868A-47A8-B12E-36D2F7564429</key>
-		<dict>
-			<key>xpos</key>
-			<integer>890</integer>
-			<key>ypos</key>
-			<integer>440</integer>
-		</dict>
 		<key>91342114-0B7A-40CA-92BC-C887D806DEAE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>670</integer>
+			<integer>630</integer>
 			<key>ypos</key>
-			<integer>120</integer>
-		</dict>
-		<key>DA64B19B-44F8-4D59-97C0-D2DF6626ACC2</key>
-		<dict>
-			<key>xpos</key>
-			<integer>890</integer>
-			<key>ypos</key>
-			<integer>290</integer>
+			<integer>60</integer>
 		</dict>
 		<key>E7145896-21CA-4681-94EA-D5492B186DCD</key>
 		<dict>
 			<key>xpos</key>
-			<integer>880</integer>
+			<integer>920</integer>
 			<key>ypos</key>
-			<integer>140</integer>
+			<integer>120</integer>
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>0.1</string>
+	<string>0.1.0</string>
 	<key>webaddress</key>
 	<string>http://links.tickstep.com</string>
 </dict>

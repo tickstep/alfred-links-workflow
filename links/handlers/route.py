@@ -34,9 +34,9 @@ def route(args):
 
     if args:
         command_string = args[0]
-        log.info('route args')
-        for arg in args:
-            log.info(arg)
+        # log.info('route args')
+        # for arg in args:
+        #     log.info(arg)
     else:
         log.info('route with empty args')
 

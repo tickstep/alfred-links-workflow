@@ -3,6 +3,7 @@
 OAUTH_PORT = 6200
 OAUTH_TIMEOUT = 60 * 10
 
+LK_GITHUB_HOMEPAGE_URL = 'https://github.com/tickstep/alfred-links-workflow'
 LK_HOMEPAGE_URL = 'http://links.tickstep.com'
 LK_REGISTER_URL = 'http://links.tickstep.com/register'
 LK_CLIENT_ID = '3b65ac132a974a8392d6119fddc8f3ca'

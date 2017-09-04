@@ -33,9 +33,8 @@ def filter(args):
         else:
             workflow().add_item(
                 u'搜索',
-                prompt,
-                arg='-search %s' % (queryWord),
-                valid=True,
+                u'根据您输入的关键词搜索软件的下载链接',
+                autocomplete=' ',
                 icon=icons.SEARCH
             )
 
@@ -44,7 +43,6 @@ def filter(args):
             u'搜索',
             u'根据您输入的关键词搜索软件的下载链接',
             autocomplete=' ',
-            arg='-search ',
             icon=icons.SEARCH
         )
     workflow().store_data(config.KC_ENABLE_SEARCH, True)

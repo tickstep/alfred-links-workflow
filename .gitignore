@@ -175,3 +175,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+.query
+.idea/**

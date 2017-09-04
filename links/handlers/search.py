@@ -59,14 +59,14 @@ def filter(args):
                     for item in items:
                         cp = cp + item['name'] + '\n'
                         cp = cp + pickDlLinks(item) + "\n"
-                    workflow().add_item(u'⌘+C 复制查询到的全部下载链接', copytext=cp, largetext=cp, arg='-search %s' % (cp), valid=True,
+                    workflow().add_item(u'⌘+C 复制查询到的全部下载链接', copytext=cp, largetext=cp,
                                         icon=icons.COPY)
 
                 for item in items:
                     createDate = datetime.utcfromtimestamp(int(item['createDate'] / 1000))
                     ts = u'{0}年{1}月'.format(createDate.year, createDate.month)
                     dl = pickDlLinks(item)
-                    workflow().add_item(item['name'], ts + ' / ' + item['dlUrl']['url'], copytext=dl, arg='-search %s' % (item['dlUrl']['url']), valid=True,
+                    workflow().add_item(item['name'], ts + ' / ' + item['dlUrl']['url'], copytext=dl,
                                         largetext=item['name'] + '\n' + dl,
                                         icon=icons.APP)
         else:
