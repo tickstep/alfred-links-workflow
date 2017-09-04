@@ -9,8 +9,6 @@ LK_REGISTER_URL = 'http://links.tickstep.com/register'
 LK_CLIENT_ID = '3b65ac132a974a8392d6119fddc8f3ca'
 LK_OAUTH_PORT = 6311
 LK_OAUTH_TIMEOUT = 60 * 10
-LK_OAUTH_URL = 'http://links.tickstep.com/authorize'
-
 LK_GET_MORE_QUERY_COUNT_URL = 'http://links.tickstep.com/donate'
 LK_ONLINE_DOC_URL = 'http://links.tickstep.com/instruction'
 
@@ -24,4 +22,5 @@ KC_RESERVED_COUNT = 'links_reserved_count'
 KC_ENABLE_SEARCH = 'links_enable_search'
 
 
-LK_SEARCH_APP_URL = 'http://elinks.tickstep.com/api/v1/links/search/app'
+LK_SEARCH_APP_URL = 'http://elinks.localhost.com/api/v1/links/search/app'
+LK_OAUTH_URL = 'http://links.localhost.com/authorize'

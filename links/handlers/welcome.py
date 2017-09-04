@@ -72,6 +72,12 @@ def filter(args):
     )
 
     workflow().add_item(
+        u'设置',
+        autocomplete='-pref ',
+        icon=icons.PREFERENCES
+    )
+
+    workflow().add_item(
         u'关于我们',
         u'查看我们的相关信息',
         autocomplete='-about ',

@@ -1,4 +1,9 @@
 from links.util import workflow
+from links.models.preferences import Preferences
+import logging
+from logging.config import fileConfig
+fileConfig('logging_config.ini')
+log = logging.getLogger('links')
 
 _icon_theme = None
 
@@ -15,7 +20,13 @@ def alfred_is_dark():
 def icon_theme():
     global _icon_theme
     if not _icon_theme:
-        _icon_theme = 'light' if alfred_is_dark() else 'dark'
+        prefs = Preferences.current_prefs()
+        log.info('theme = %s' % (prefs.theme))
+
+        if prefs.theme:
+            _icon_theme = prefs.theme
+        else:
+            _icon_theme = 'light' if alfred_is_dark() else 'dark'
 
     return _icon_theme
 

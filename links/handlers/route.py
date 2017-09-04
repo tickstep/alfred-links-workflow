@@ -58,6 +58,9 @@ def route(args):
     elif 'moreQuery'.find(action) == 0:
         from links.handlers import query_count
         handler = query_count
+    elif 'pref'.find(action) == 0:
+        from links.handlers import preferences
+        handler = preferences
 
     elif 'search'.find(action) == 0:
         from links.handlers import search
