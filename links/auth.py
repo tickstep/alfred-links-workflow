@@ -62,6 +62,8 @@ def handle_authorization_url(url):
             workflow().store_data(config.KC_RESERVED_COUNT, params['reservedCount'][0])
         if 'userName' in params:
             workflow().store_data(config.KC_USER_NAME, params['userName'][0])
+        if 'vip' in params:
+            workflow().store_data(config.KC_VIP_STATUS, params['vip'][0])
 
         print '您已经成功登录'
         return True

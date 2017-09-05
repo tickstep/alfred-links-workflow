@@ -8,7 +8,7 @@ import time
 import os
 from links import icons, config
 from links.util import workflow
-
+from links.models.preferences import Preferences
 import logging
 from logging.config import fileConfig
 fileConfig('logging_config.ini')
@@ -27,7 +27,7 @@ def getWorkflowVersion():
     return ver.strip()
 
 
-def search(query):
+def search(query, offset, size):
     localResult = {
         'statusCode': 0,
         'message': '',
@@ -38,9 +38,12 @@ def search(query):
     log.info('appKey: %s' % (appKey))
 
     # query the keyword from web server
+    prefs = Preferences.current_prefs()
     session = requests.session()
     formData = {
-        'keyword': query
+        'keyword': query,
+        'from': offset,
+        'size': size
     }
     resp = session.post(
         url=config.LK_SEARCH_APP_URL,

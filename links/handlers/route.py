@@ -61,8 +61,11 @@ def route(args):
     elif 'pref'.find(action) == 0:
         from links.handlers import preferences
         handler = preferences
+    elif 'result_count'.find(action) == 0:
+        from links.handlers import result_count
+        handler = result_count
 
-    elif 'search'.find(action) == 0:
+    elif action.find('search') == 0:
         from links.handlers import search
         handler = search
 

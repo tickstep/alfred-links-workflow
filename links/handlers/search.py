@@ -2,6 +2,7 @@
 
 from datetime import datetime
 from links import icons, config
+from links.models.preferences import Preferences
 from links.util import workflow
 from links.api import search_api
 import logging
@@ -11,14 +12,28 @@ log = logging.getLogger('links')
 
 
 def filter(args):
+    prefs = Preferences.current_prefs()
+
+    log.info(args)
+    queryWord = ''
+    if len(args) >= 2:
+        queryWord = ''
+        for idx in range(1, len(args)):
+            w = args[idx]
+            queryWord = "%s %s" % (queryWord, w)
+    queryWord = queryWord.strip()
 
     if not workflow().stored_data(config.KC_ENABLE_SEARCH):
-        workflow().add_item(
-            u'先返回主菜单再进行搜索',
-            autocomplete=' ', icon=icons.BACK
-        )
-        workflow().store_data(config.KC_ENABLE_SEARCH, False)
-        return
+        log.info('enable search false')
+        log.info('store last time keyword: %s' % workflow().stored_data(config.KC_LAST_TIME_QUERY_WORD))
+        # the same keyword means this is page navigate action
+        if queryWord != workflow().stored_data(config.KC_LAST_TIME_QUERY_WORD):
+            workflow().add_item(
+                u'需要先返回主菜单才能进行新的搜索',
+                autocomplete=' ', icon=icons.BACK
+            )
+            workflow().store_data(config.KC_ENABLE_SEARCH, False)
+            return
 
     workflow().add_item(
         u'返回主菜单',
@@ -27,16 +42,19 @@ def filter(args):
     log.info('begin to search')
     workflow().store_data(config.KC_ENABLE_SEARCH, False)
 
+    # page index
+    scmd = args[0]
+    idx = scmd.find(':')
+    if idx > 0:
+        pidx = int(scmd[idx + 1:])
+        workflow().store_data(config.KC_CURRENT_PAGE_INDEX, pidx)
+    else:
+        workflow().store_data(config.KC_CURRENT_PAGE_INDEX, 0)
+
     # search
-    queryWord = ''
-    if len(args) >= 2:
-        queryWord = ''
-        for idx in range(1, len(args)):
-            w = args[idx]
-            queryWord = "%s %s" % (queryWord, w)
-    queryWord = queryWord.strip()
     log.info('begin to search %s' % (queryWord))
-    result = search_api.search(queryWord)
+    workflow().store_data(config.KC_LAST_TIME_QUERY_WORD, queryWord)
+    result = search_api.search(queryWord, workflow().stored_data(config.KC_CURRENT_PAGE_INDEX) * prefs.maxResultCount, prefs.maxResultCount)
 
     if result['statusCode'] == 0:
         if 'data' in result and result['data'] != None and len(result['data']) > 0:
@@ -47,6 +65,11 @@ def filter(args):
                 workflow().store_data(config.KC_MAX_COUNT, queryCount['max'])
             if 'reserved' in queryCount:
                 workflow().store_data(config.KC_RESERVED_COUNT, queryCount['reserved'])
+
+            # vip
+            if 'vip' in queryCount:
+                log.info('vip = %s' % (queryCount['vip']))
+                workflow().store_data(config.KC_VIP_STATUS, queryCount['vip'])
 
             # download link item
             items = result['data']['items']
@@ -69,6 +92,14 @@ def filter(args):
                     workflow().add_item(item['name'], ts + ' / ' + item['dlUrl']['url'], copytext=dl,
                                         largetext=item['name'] + '\n' + dl,
                                         icon=icons.APP)
+
+                # next page has?
+                if len(items) >= prefs.maxResultCount and workflow().stored_data(config.KC_VIP_STATUS):
+                    workflow().add_item(
+                        u'下一页',
+                        autocomplete='-search:%s %s' % (workflow().stored_data(config.KC_CURRENT_PAGE_INDEX) + 1, queryWord), icon=icons.NEXT
+                    )
+
         else:
             workflow().add_item(u'没有查询到结果，更改关键词再试试吧')
     else:

@@ -46,6 +46,7 @@ def filter(args):
             icon=icons.SEARCH
         )
     workflow().store_data(config.KC_ENABLE_SEARCH, True)
+    workflow().store_data(config.KC_CURRENT_PAGE_INDEX, 0)
 
     reservedCount = u'%s: %s 次,  %s: %s 次' % (u'本月剩余', workflow().stored_data(config.KC_RESERVED_COUNT), u'本月总共', workflow().stored_data(config.KC_MAX_COUNT))
     workflow().add_item(
@@ -63,7 +64,11 @@ def filter(args):
         icon=icons.LIST
     )
 
-    logoutAccount = '%s: %s' % (u'退出您当前登录的账户', workflow().stored_data(config.KC_USER_NAME))
+    vipFlag = ''
+    log.info(workflow().stored_data(config.KC_VIP_STATUS))
+    if workflow().stored_data(config.KC_VIP_STATUS):
+        vipFlag = '(VIP)'
+    logoutAccount = '%s: %s%s' % (u'退出您当前登录的账户', workflow().stored_data(config.KC_USER_NAME), vipFlag)
     workflow().add_item(
         u'退出登录',
         logoutAccount,
