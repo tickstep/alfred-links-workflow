@@ -6,7 +6,7 @@ Type keyword to search and get the macOS software download link with this [Alfre
 Setup
 -----
 
-### [Download here](https://github.com/tickstep/alfred-links-workflow/releases/download/0.1.1/links.alfredworkflow)
+### [Download here](https://github.com/tickstep/alfred-links-workflow/releases/download/0.1.2/links.alfredworkflow)
 
 After downloading, simply double-click to install the workflow in Alfred. Use the `lk` command in Alfred to activate the workflow. The workflow will guide you how to do through the prompt options.
 
