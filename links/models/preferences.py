@@ -44,7 +44,7 @@ class Preferences(object):
 
     @property
     def maxResultCount(self):
-        return self._get(KEY_MAX_RESTUL_COUNT, 20)
+        return self._get(KEY_MAX_RESTUL_COUNT, 6)
 
     @maxResultCount.setter
     def maxResultCount(self, count):

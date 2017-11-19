@@ -13,12 +13,12 @@ log = logging.getLogger('links')
 def filter(args):
     prefs = Preferences.current_prefs()
 
-    workflow().add_item(
-        u'查询结果个数',
-        u'设置服务器每页返回结果的最大个数',
-        autocomplete='-result_count ',
-        icon=icons.LIST
-    )
+    # workflow().add_item(
+    #     u'查询结果个数',
+    #     u'设置服务器每页返回结果的最大个数',
+    #     autocomplete='-result_count ',
+    #     icon=icons.LIST
+    # )
 
     workflow().add_item(
         u'切换主题',

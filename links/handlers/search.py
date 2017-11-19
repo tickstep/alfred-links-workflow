@@ -94,7 +94,7 @@ def filter(args):
                                         icon=icons.APP)
 
                 # next page has?
-                if len(items) >= prefs.maxResultCount and workflow().stored_data(config.KC_VIP_STATUS):
+                if len(items) >= prefs.maxResultCount:
                     workflow().add_item(
                         u'下一页',
                         autocomplete='-search:%s %s' % (workflow().stored_data(config.KC_CURRENT_PAGE_INDEX) + 1, queryWord), icon=icons.NEXT

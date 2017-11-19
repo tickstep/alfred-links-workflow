@@ -77,7 +77,7 @@
 	<key>createdby</key>
 	<string>tickstep studio team</string>
 	<key>description</key>
-	<string>获取软件的下载链接</string>
+	<string>获取macOS软件的下载链接</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -206,6 +206,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -233,9 +235,9 @@ echo "{query}" &gt; .query
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>获取软件的下载链接</string>
+				<string>获取macOS软件的下载链接</string>
 				<key>title</key>
-				<string>链接一下，立刻下载</string>
+				<string>搜索一下，立刻下载</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
