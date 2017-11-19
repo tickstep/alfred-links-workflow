@@ -18,7 +18,7 @@ def workflow():
     global _workflow, _update_settings
 
     if _workflow is None:
-        version = '0.1.2'
+        version = '0.1.3'
 
         _workflow = Workflow(
             capture_args=False,
