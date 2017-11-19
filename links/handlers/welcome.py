@@ -57,6 +57,22 @@ def filter(args):
     )
 
     workflow().add_item(
+        u'精选应用',
+        u'前往精选应用专区',
+        arg='-jingxuan ',
+        valid=True,
+        icon=icons.STAR_REMOVE
+    )
+
+    workflow().add_item(
+        u'我的收藏夹',
+        u'查看网上收藏夹',
+        arg='-favorite ',
+        valid=True,
+        icon=icons.HEART
+    )
+
+    workflow().add_item(
         u'帮助文档',
         u'前往我们的官方网站查看相关帮助文档',
         arg='-document ',
@@ -93,6 +109,13 @@ def filter(args):
 def commit(args, modifier=None):
     if 'document' in args:
         webbrowser.open(config.LK_ONLINE_DOC_URL)
+
+    elif 'jingxuan' in args:
+        webbrowser.open(config.LK_ONLINE_JINGXUAN_URL)
+
+    elif 'favorite' in args:
+        webbrowser.open(config.LK_ONLINE_FAVORITE_URL)
+
 
 
 

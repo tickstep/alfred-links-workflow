@@ -11,7 +11,8 @@ LK_OAUTH_PORT = 6311
 LK_OAUTH_TIMEOUT = 60 * 10
 LK_GET_MORE_QUERY_COUNT_URL = 'http://links.tickstep.com/donate'
 LK_ONLINE_DOC_URL = 'http://links.tickstep.com/instruction'
-
+LK_ONLINE_JINGXUAN_URL = 'http://links.tickstep.com/jingxuan'
+LK_ONLINE_FAVORITE_URL = 'http://links.tickstep.com/favorite'
 
 KC_OAUTH_TOKEN = 'links_oauth_token'
 KC_OAUTH_STATE = 'links_oauth_state'
