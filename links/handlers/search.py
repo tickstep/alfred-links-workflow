@@ -82,6 +82,7 @@ def filter(args):
                     for item in items:
                         cp = cp + item['name'] + '\n'
                         cp = cp + pickDlLinks(item) + "\n"
+
                     workflow().add_item(u'⌘+C 复制查询到的全部下载链接', copytext=cp, largetext=cp,
                                         icon=icons.COPY)
 
@@ -124,5 +125,8 @@ def pickDlLinks(item):
         str = item['dlUrl']['url'] + "\n"
     if len(item['dlUrl']['baiduDiskUrl']) > 0:
         str = str + item['dlUrl']['url'] + "\n"
+
+    if 'password' in item and len(item['password']) > 0:
+        str = str + u"解压密码： " + item['password'] + "\n"
     return str
 
