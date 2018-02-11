@@ -255,6 +255,9 @@ echo "{query}" &gt; .query
 	<string>链刻/Links服务官方Alfred workflow扩展。
 请访问我们的官方网站了解更多信息：http://links.tickstep.com
 
+v0.1.4版本
+1，增加解压密码复制
+
 v0.1.3版本
 1，搜索增加下一页功能
 2，增加精选应用链接
