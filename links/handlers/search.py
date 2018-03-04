@@ -88,9 +88,9 @@ def filter(args):
 
                 for item in items:
                     createDate = datetime.utcfromtimestamp(int(item['createDate'] / 1000))
-                    ts = u'{0}年{1}月'.format(createDate.year, createDate.month)
+                    ts = u'更新时间：{0}年{1}月{2}日'.format(createDate.year, createDate.month, createDate.day)
                     dl = pickDlLinks(item)
-                    workflow().add_item(item['name'], ts + ' / ' + item['dlUrl']['url'], copytext=dl,
+                    workflow().add_item(item['name'], ts, copytext=dl,
                                         largetext=item['name'] + '\n' + dl,
                                         icon=icons.APP)
 
@@ -120,13 +120,16 @@ def commit(args, modifier=None):
 
 
 def pickDlLinks(item):
-    str = ""
-    if len(item['dlUrl']['url']) > 0:
-        str = item['dlUrl']['url'] + "\n"
-    if len(item['dlUrl']['baiduDiskUrl']) > 0:
-        str = str + item['dlUrl']['url'] + "\n"
+    dlStr = u'你没有权限访问下载链接\n'
+    if 'dlUrl' in item:
+        if 'url' in item['dlUrl'] and len(item['dlUrl']['url']) > 0:
+            dlStr = item['dlUrl']['url'] + "\n"
+        elif 'torrentUrl' in item['dlUrl'] and len(item['dlUrl']['torrentUrl']) > 0:
+            dlStr = item['dlUrl']['torrentUrl'] + "\n"
+        elif 'baiduDiskUrl' in item['dlUrl'] and len(item['dlUrl']['baiduDiskUrl']) > 0:
+            dlStr = item['dlUrl']['baiduDiskUrl'] + "\n"
 
     if 'password' in item and len(item['password']) > 0:
-        str = str + u"解压密码： " + item['password'] + "\n"
-    return str
+        dlStr = dlStr + u"解压密码： " + item['password'] + "\n"
+    return dlStr
 
